@@ -25,6 +25,7 @@ import com.microsoft.applicationinsights.TelemetryConfiguration;
 import com.microsoft.applicationinsights.internal.logger.InternalLogger;
 import com.microsoft.applicationinsights.internal.shutdown.SDKShutdownActivity;
 import com.microsoft.applicationinsights.internal.util.PeriodicTaskPool;
+import com.microsoft.applicationinsights.internal.util.ProxyUtil;
 import com.microsoft.applicationinsights.internal.util.SSLOptionsUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
@@ -72,6 +73,7 @@ public class CdsProfileFetcher implements AppProfileFetcher, ApplicationIdResolv
                 .setSocketTimeout(5000)
                 .setConnectTimeout(5000)
                 .setConnectionRequestTimeout(5000)
+                .setProxy(ProxyUtil.getProxy())
                 .build();
 
         final String[] allowedProtocols = SSLOptionsUtil.getAllowedProtocols();

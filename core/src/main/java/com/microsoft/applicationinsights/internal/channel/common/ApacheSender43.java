@@ -26,6 +26,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import com.microsoft.applicationinsights.internal.logger.InternalLogger;
 
+import com.microsoft.applicationinsights.internal.util.ProxyUtil;
 import com.microsoft.applicationinsights.internal.util.SSLOptionsUtil;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -122,6 +123,7 @@ final class ApacheSender43 implements ApacheSender {
                 .setConnectionRequestTimeout(REQUEST_TIMEOUT_IN_MILLIS)
                 .setSocketTimeout(REQUEST_TIMEOUT_IN_MILLIS)
                 .setConnectTimeout(REQUEST_TIMEOUT_IN_MILLIS)
+                .setProxy(ProxyUtil.getProxy())
                 .build();
 
         request.setConfig(requestConfig);
